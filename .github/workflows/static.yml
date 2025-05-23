@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOD STORE - Premium App Download</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #00cec9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .page {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .page-content {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .ad-container {
+            margin: 25px 0;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+            border: 1px dashed var(--secondary);
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .countdown {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 30px 0;
+            color: var(--dark);
+        }
+        
+        .countdown-number {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .continue-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .continue-btn:disabled {
+            background: #b2bec3;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .continue-btn:not(:disabled):hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(108, 92, 231, 0.4);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #dfe6e9;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">MOD STORE</div>
+            <div class="tagline">Premium Apps & Games</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <!-- Page 1 -->
+        <div class="page active" id="page1">
+            <h2 class="page-title">Your Download is Ready!</h2>
+            <div class="page-content">
+                <p>Thank you for choosing MOD STORE! Your premium app download will begin shortly.</p>
+                <p>Please wait while we verify your request...</p>
+            </div>
+            
+            <!-- Adsterra Banner Ad 1 (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Offer</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1feb8ed06337af8f2000ddbaeeeeb81d',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/1feb8ed06337af8f2000ddbaeeeeb81d/invoke.js"></script>
+            </div>
+            
+            <!-- Adsterra Native Banner 1 (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Recommended For You</div>
+                <script async="async" data-cfasync="false" src="https://pl23356443.profitableratecpm.com/07f9b98d45e6966ef7bd04987b53c459/invoke.js"></script>
+                <div id="container-07f9b98d45e6966ef7bd04987b53c459"></div>
+            </div>
+            
+            <div class="countdown">
+                Please wait <span class="countdown-number" id="countdown1">15</span> seconds to continue
+            </div>
+            
+            <button class="continue-btn" id="btn1" disabled>Continue</button>
+        </div>
+        
+        <!-- Page 2 -->
+        <div class="page" id="page2">
+            <h2 class="page-title">Exclusive Offer Just For You!</h2>
+            <div class="page-content">
+                <p>We've found some amazing deals that match your interests. Don't miss out!</p>
+            </div>
+            
+            <!-- Adsterra Popunder (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Limited Time Offer</div>
+                <script type='text/javascript' src='https://pl23355823.profitableratecpm.com/f4/9a/0f/f49a0f60dfd93a8bdc80baf8b283fcb2.js'></script>
+            </div>
+            
+            <!-- Adsterra Banner Ad 2 (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Special Promotion</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1feb8ed06337af8f2000ddbaeeeeb81d',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/1feb8ed06337af8f2000ddbaeeeeb81d/invoke.js"></script>
+            </div>
+            
+            <div class="countdown">
+                Please wait <span class="countdown-number" id="countdown2">15</span> seconds to continue
+            </div>
+            
+            <button class="continue-btn" id="btn2" disabled>Continue</button>
+        </div>
+        
+        <!-- Page 3 -->
+        <div class="page" id="page3">
+            <h2 class="page-title">Almost There!</h2>
+            <div class="page-content">
+                <p>Your download is being prepared. Check out these last-minute offers:</p>
+            </div>
+            
+            <!-- Adsterra Social Banner (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Trending Now</div>
+                <script type='text/javascript' src='https://pl23356185.profitableratecpm.com/95/99/73/959973748911566f9e60c03d2daaf5c8.js'></script>
+            </div>
+            
+            <!-- Adsterra Native Banner 2 (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">You May Like</div>
+                <script async="async" data-cfasync="false" src="https://pl23356443.profitableratecpm.com/07f9b98d45e6966ef7bd04987b53c459/invoke.js"></script>
+                <div id="container-07f9b98d45e6966ef7bd04987b53c459"></div>
+            </div>
+            
+            <div class="countdown">
+                Please wait <span class="countdown-number" id="countdown3">15</span> seconds to continue
+            </div>
+            
+            <button class="continue-btn" id="btn3" disabled>Continue</button>
+        </div>
+        
+        <!-- Page 4 -->
+        <div class="page" id="page4">
+            <h2 class="page-title">Final Step!</h2>
+            <div class="page-content">
+                <p>Your premium app download is ready to start. Just one more moment...</p>
+            </div>
+            
+            <!-- Adsterra Banner Ad 3 (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Last Chance</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1feb8ed06337af8f2000ddbaeeeeb81d',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/1feb8ed06337af8f2000ddbaeeeeb81d/invoke.js"></script>
+            </div>
+            
+            <!-- Adsterra Popunder 2 (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Exclusive Deal</div>
+                <script type='text/javascript' src='https://pl23355823.profitableratecpm.com/f4/9a/0f/f49a0f60dfd93a8bdc80baf8b283fcb2.js'></script>
+            </div>
+            
+            <div class="countdown">
+                Please wait <span class="countdown-number" id="countdown4">15</span> seconds to continue
+            </div>
+            
+            <button class="continue-btn" id="btn4" disabled>Continue</button>
+        </div>
+        
+        <!-- Page 5 (Download Page) -->
+        <div class="page" id="page5">
+            <h2 class="page-title">Download Ready!</h2>
+            <div class="page-content">
+                <p>Your premium app is ready to download. Click the button below to start downloading now.</p>
+                <p>Thank you for using MOD STORE!</p>
+            </div>
+            
+            <!-- Final Adsterra Native Banner (Fixed HTTPS) -->
+            <div class="ad-container">
+                <div class="ad-label">Before You Go</div>
+                <script async="async" data-cfasync="false" src="https://pl23356443.profitableratecpm.com/07f9b98d45e6966ef7bd04987b53c459/invoke.js"></script>
+                <div id="container-07f9b98d45e6966ef7bd04987b53c459"></div>
+            </div>
+            
+            <button class="continue-btn" id="downloadBtn">Download Now</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 MOD STORE. All rights reserved.</p>
+            <p>By using our service, you agree to our Terms of Service and Privacy Policy.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Current page tracking
+        let currentPage = 1;
+        const totalPages = 5;
+        const waitTime = 15; // 15 seconds per page
+        
+        // Initialize countdowns and buttons
+        function initPage() {
+            // Update progress bar
+            document.getElementById('progressBar').style.width = `${((currentPage-1)/(totalPages-1))*100}%`;
+            
+            // Set up countdown for current page
+            if (currentPage < totalPages) {
+                const countdownElement = document.getElementById(`countdown${currentPage}`);
+                const continueBtn = document.getElementById(`btn${currentPage}`);
+                let timeLeft = waitTime;
+                
+                countdownElement.textContent = timeLeft;
+                continueBtn.disabled = true;
+                
+                const countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    countdownElement.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        continueBtn.disabled = false;
+                    }
+                }, 1000);
+                
+                // Set up continue button
+                continueBtn.onclick = () => {
+                    clearInterval(countdownInterval);
+                    navigateToPage(currentPage + 1);
+                };
+            } else {
+                // Set up download button
+                document.getElementById('downloadBtn').onclick = () => {
+                    // Replace with your actual download URL
+                    window.location.href = "YOUR_ACTUAL_DOWNLOAD_URL_HERE";
+                };
+            }
+        }
+        
+        // Navigate to specific page
+        function navigateToPage(pageNumber) {
+            // Hide current page
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            
+            // Show new page
+            currentPage = pageNumber;
+            document.getElementById(`page${currentPage}`).classList.add('active');
+            
+            // Initialize new page
+            initPage();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Trigger popunder on page 2 and 3
+            if (currentPage === 2 || currentPage === 3) {
+                // Popunder is already included in the ad code
+            }
+        }
+        
+        // Initialize first page
+        window.onload = function() {
+            initPage();
+        };
+    </script>
+</body>
+</html>
